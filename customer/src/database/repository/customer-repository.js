@@ -151,16 +151,12 @@ class CustomerRepository {
     isRemove
   ) {
     try {
-      const cartItem = {
-        product: { _id, name, desc, price, available, banner },
-        unit: 1,
-      };
       const profile = await CustomerModel.findById(customerId).populate("cart");
 
       if (profile) {
         const cartItem = {
-          product,
-          unit: qty,
+          product: { _id, name, desc, price, available, banner },
+          unit: 1,
         };
 
         let cartItems = profile.cart;
